@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Company extends Model
+class PaymentMethod extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
-    protected $with = ['city', 'state', 'country', 'license'];
+    protected $with = ['logo'];
 
     protected static function boot()
     {
@@ -22,27 +22,12 @@ class Company extends Model
         });
 
         static::creating(function ($query) {
-            $query->code = generateCode('company');
+            $query->code = generateCode('payment-method');
         });
     }
 
-    public function city()
+    public function logo()
     {
-        return $this->belongsTo(City::class);
+        return $this->belongsTo(Upload::class, 'logo');
     }
-
-    public function state()
-    {
-        return $this->belongsTo(State::class);
-    }
-
-    public function country()
-    {
-        return $this->belongsTo(Country::class);
-    }
-    public function package()
-    {
-        return $this->belongsTo(SellingPackage::class, 'package_id');
-    }
-
 }

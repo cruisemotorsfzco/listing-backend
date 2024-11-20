@@ -39,4 +39,23 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function savedPaymentMethods()
+    {
+        return $this->hasMany(SavedPaymentMethodOfUser::class);
+    }
+
+    public function invoiceAddresses()
+    {
+        return $this->hasMany(InvoiceAddress::class);
+    }
+
+    public function package()
+    {
+        return $this->belongsTo(SellingPackage::class, 'package_id');
+    }
+    public function priceDropNotifications()
+    {
+        return $this->hasMany(PriceDropNotification::class);
+    }
 }

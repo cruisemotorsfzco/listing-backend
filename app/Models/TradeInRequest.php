@@ -5,19 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class City extends Model
+class TradeInRequest extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
-
-    public function country()
+    public function user()
     {
-        return $this->belongsTo(Country::class);
+        return $this->belongsTo(User::class);
     }
-
-    public function state()
+    public function car()
     {
-        return $this->belongsTo(State::class);
+        return $this->belongsTo(Car::class);
     }
 }

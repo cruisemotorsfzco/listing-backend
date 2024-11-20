@@ -25,6 +25,9 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('postal_code')->nullable();
             $table->text('description')->nullable();
+            $table->boolean('is_partner')->nullable();
+            $table->unsignedBigInteger('package_id')->nullable()->after('id'); // Add package_id column
+            $table->foreign('package_id')->references('id')->on('selling_packages')->nullOnDelete()->cascadeOnUpdate(); // Foreign key constraint
             $table->timestamps();
             $table->softDeletes();
         });
