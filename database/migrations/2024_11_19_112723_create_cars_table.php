@@ -54,9 +54,9 @@ return new class extends Migration {
 
         Schema::table('cars', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('car_make_id')->references('id')->on('car_makes')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('car_model_id')->references('id')->on('car_models')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('car_variant_id')->references('id')->on('car_variants')->cascadeOnUpdate()->cascadeOnDelete();
+            // $table->foreign('car_make_id')->references('id')->on('car_makes')->cascadeOnUpdate()->cascadeOnDelete();
+            // $table->foreign('car_model_id')->references('id')->on('car_models')->cascadeOnUpdate()->cascadeOnDelete();
+            // $table->foreign('car_variant_id')->references('id')->on('car_variants')->cascadeOnUpdate()->cascadeOnDelete();
         });
 
     }

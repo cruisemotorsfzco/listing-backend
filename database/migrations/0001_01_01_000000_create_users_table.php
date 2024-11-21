@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone')->nullable();
             $table->timestamp('phone_verified_at')->nullable();
-            $table->unsignedBigInteger('package_id')->nullable()->after('id'); 
-            $table->foreign('package_id')->references('id')->on('selling_packages')->nullOnDelete()->cascadeOnUpdate(); 
+            $table->unsignedBigInteger('package_id')->nullable(); 
+            
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

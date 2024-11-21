@@ -11,15 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_images', function (Blueprint $table) {
+        Schema::create('product_sub_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('products')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('image_id')->constrained('uploads')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->integer('order')->default(0);
-            $table->string('caption')->nullable();
-            $table->string('alt_text')->nullable();
+            $table->string('code')->unique();
+            $table->unsignedBigInteger('thumbnail')->nullable();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->unsignedBigInteger('product_category_id')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
+        });
+
+        Schema::table('products', function (Blueprint $table) {
+            $table->foreign('product_sub_category_id')->references('id')->on('product_sub_categories')->onDelete('cascade');
         });
     }
 

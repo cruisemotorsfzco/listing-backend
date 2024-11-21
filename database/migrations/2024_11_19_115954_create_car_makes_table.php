@@ -15,10 +15,14 @@ return new class extends Migration {
             $table->string('code')->unique();
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->foreignId('logo')->nullable()->constrained('uploads')->cascadeOnUpdate()->nullOnDelete();
+            $table->unsignedBigInteger('logo')->nullable();
             $table->string('official_website')->nullable();
             $table->timestamps();
             $table->softDeletes();
+        });
+
+        Schema::table('cars', function (Blueprint $table) {
+            $table->foreign('car_make_id')->references('id')->on('car_makes')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

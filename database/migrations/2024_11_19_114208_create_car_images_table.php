@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->foreignId('car_id')->constrained();
-            $table->foreignId('image_id')->constrained('uploads');
+            $table->unsignedBigInteger('image_id')->nullable();
             $table->boolean('is_thumbnail')->default(false);
             $table->boolean('is_thumbnail_interior')->default(false);
             $table->timestamps();

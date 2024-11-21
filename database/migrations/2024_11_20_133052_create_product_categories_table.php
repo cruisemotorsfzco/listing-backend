@@ -21,6 +21,10 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        Schema::table('products', function (Blueprint $table) {
+            $table->foreign('product_category_id')->references('id')->on('product_categories')->onDelete('cascade');
+        });
     }
 
     /**

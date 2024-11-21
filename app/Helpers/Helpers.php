@@ -14,6 +14,7 @@ use App\Models\ProductSubCategory;
 use App\Models\Upload;
 use App\Models\RegionalSpec;
 use App\Models\Badge;
+use App\Models\Inquiry;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 

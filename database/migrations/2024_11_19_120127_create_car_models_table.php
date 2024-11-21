@@ -16,10 +16,13 @@ return new class extends Migration
             $table->string('code')->unique();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->foreignId('logo')->nullable()->constrained('uploads')->cascadeOnUpdate()->nullOnDelete();
-            $table->foreignId('car_make_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->unsignedBigInteger('logo')->nullable();            $table->foreignId('car_make_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
+        });
+
+        Schema::table('cars', function (Blueprint $table) {
+            $table->foreign('car_model_id')->references('id')->on('cars')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

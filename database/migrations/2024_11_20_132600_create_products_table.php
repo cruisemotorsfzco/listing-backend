@@ -34,8 +34,8 @@ return new class extends Migration
 
         Schema::table('products', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('product_category_id')->references('id')->on('product_categories')->onDelete('cascade');
-            $table->foreign('product_sub_category_id')->references('id')->on('product_sub_categories')->onDelete('cascade');
+            // $table->foreign('product_category_id')->references('id')->on('product_categories')->onDelete('cascade');
+            // $table->foreign('product_sub_category_id')->references('id')->on('product_sub_categories')->onDelete('cascade');
 //            $table->foreign('thumbnail')->references('id')->on('uploads')->onDelete('set null');
         });
     }

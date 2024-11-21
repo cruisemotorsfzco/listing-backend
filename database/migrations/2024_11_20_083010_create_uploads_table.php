@@ -25,6 +25,16 @@ return new class extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
         });
+
+        Schema::table('car_images', function (Blueprint $table) {
+            $table->foreign('image_id')->references('id')->on('uploads')->cascadeOnUpdate()->cascadeOnDelete();
+        });
+        Schema::table('car_makes', function (Blueprint $table) {
+            $table->foreign('logo')->references('id')->on('uploads')->cascadeOnUpdate()->cascadeOnDelete();
+        });
+        Schema::table('car_models', function (Blueprint $table) {
+            $table->foreign('logo')->references('id')->on('uploads')->cascadeOnUpdate()->cascadeOnDelete();
+        });
     }
 
     /**
