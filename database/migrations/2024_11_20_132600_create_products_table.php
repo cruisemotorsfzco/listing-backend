@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->unsignedBigInteger('product_category_id');
             $table->unsignedBigInteger('product_sub_category_id')->nullable();
+            $table->unsignedBigInteger('car_make_id')->nullable();
+            $table->unsignedBigInteger('car_model_id')->nullable();
             $table->string('sku')->nullable();
             $table->text('short_description')->nullable();
             $table->text('long_description')->nullable();
@@ -34,6 +36,8 @@ return new class extends Migration
 
         Schema::table('products', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('car_make_id')->references('id')->on('car_makes')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('car_model_id')->references('id')->on('car_models')->cascadeOnUpdate()->cascadeOnDelete();
             // $table->foreign('product_category_id')->references('id')->on('product_categories')->onDelete('cascade');
             // $table->foreign('product_sub_category_id')->references('id')->on('product_sub_categories')->onDelete('cascade');
 //            $table->foreign('thumbnail')->references('id')->on('uploads')->onDelete('set null');

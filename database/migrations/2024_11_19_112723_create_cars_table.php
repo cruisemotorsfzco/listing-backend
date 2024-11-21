@@ -24,12 +24,12 @@ return new class extends Migration {
             $table->unsignedBigInteger('car_body_type_id')->nullable();
             $table->unsignedBigInteger('car_category_id')->nullable();
             $table->unsignedBigInteger('car_regional_spec_id')->nullable();
-            $table->enum('condition', ['New', 'Used'])->nullable();
+            $table->enum('condition', ['New', 'Used','Accidental'])->nullable();
             $table->enum('transmission', ['Manual', 'Automatic'])->nullable();
             $table->text('variant_details')->nullable();
             $table->text('description')->nullable();
-            $table->text('features')->nullable()->comment('AC, Radio, Aux, Bluetoth, ...');
-            $table->text('technical_features')->nullable()->comment(('4*4,All wheel steering,...'));
+            $table->json('features')->nullable()->comment('AC, Radio, Aux, Bluetoth, ...');
+            $table->json('technical_features')->nullable()->comment(('4*4,All wheel steering,...'));
             $table->enum('steering_type', ['LHD', 'RHD'])->nullable();
             $table->enum('fuel_type', ['Petrol', 'Diesel', 'Electric', 'Hybrid'])->nullable()->comment('petrol, diesel, electric, hybrid');
             $table->integer('no_of_seats')->nullable();

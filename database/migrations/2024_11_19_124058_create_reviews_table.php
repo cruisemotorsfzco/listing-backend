@@ -14,13 +14,16 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id(); 
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('car_id'); 
+            // $table->unsignedBigInteger('car_id'); 
+            $table->nullableMorphs('source');
             $table->text('review'); 
-            $table->unsignedTinyInteger('rating')->comment('Rating out of 5'); 
+            $table->double('rating')->comment('Rating out of 5'); 
             $table->timestamps(); 
             $table->softDeletes(); 
+
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); 
-            $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade'); 
+            // $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade'); 
         });
     }
 

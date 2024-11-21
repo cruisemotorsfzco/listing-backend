@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -16,10 +15,15 @@ return new class extends Migration
             $table->string('code')->unique();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->unsignedBigInteger('car_make_id')->nullable();
             $table->foreignId('car_model_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('car_make_id')->references('id')->on('car_makes')->cascadeOnUpdate()->cascadeOnDelete();
         });
+
+        
 
         Schema::table('cars', function (Blueprint $table) {
             $table->foreign('car_variant_id')->references('id')->on('car_variants')->cascadeOnUpdate()->cascadeOnDelete();

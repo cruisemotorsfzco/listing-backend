@@ -18,4 +18,17 @@ class Car extends Model
     {
         return $this->hasMany(PriceDropNotification::class);
     }
+
+    public function reviews()
+    {
+        return $this->morphMany(Review::class, 'source');
+    }
+    public function auctionItems()
+    {
+        return $this->morphMany(AuctionItem::class, 'auctionable_item');
+    }
+    public function seo()
+    {
+        return $this->morphOne(Seo::class, 'seoble');
+    }
 }

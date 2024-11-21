@@ -32,7 +32,7 @@ class Product extends Model
         });
 
         static::creating(function ($product) {
-            $product->slug = Str::slug($product->name . '-' . strtotime(now())). '-' . rand(1000, 99999);
+            $product->slug = Str::slug($product->name . '-' . strtotime(now())) . '-' . rand(1000, 99999);
             $product->code = generateCode('product');
         });
     }
@@ -83,5 +83,18 @@ class Product extends Model
     public function carVariant()
     {
         return $this->belongsTo(CarModel::class, 'car_variant_id');
+    }
+
+    public function reviews()
+    {
+        return $this->morphMany(Review::class, 'source');
+    }
+    public function auctionItems()
+    {
+        return $this->morphMany(AuctionItem::class, 'auctionable_item');
+    }
+    public function seo()
+    {
+        return $this->morphOne(Seo::class, 'seoble');
     }
 }

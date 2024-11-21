@@ -22,9 +22,9 @@ return new class extends Migration {
             $table->softDeletes();
         });
 
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreign('package_id')->references('id')->on('selling_packages')->nullOnDelete()->cascadeOnUpdate();
-        }); //
+        // Schema::table('users', function (Blueprint $table) {
+        //     $table->foreign('package_id')->references('id')->on('selling_packages')->nullOnDelete()->cascadeOnUpdate();
+        // }); //
         // Schema::table('users', function (Blueprint $table) {
         //     $table->foreign('package_id')->references('id')->on('selling_packages')->nullOnDelete()->cascadeOnUpdate(); // Foreign key constraint
         // }); //

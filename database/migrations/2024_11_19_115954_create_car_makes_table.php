@@ -24,6 +24,13 @@ return new class extends Migration {
         Schema::table('cars', function (Blueprint $table) {
             $table->foreign('car_make_id')->references('id')->on('car_makes')->cascadeOnUpdate()->cascadeOnDelete();
         });
+
+        // Schema::table('products', function (Blueprint $table) {
+        //     $table->foreign('car_make_id')->references('id')->on('car_makes')->cascadeOnUpdate()->cascadeOnDelete();
+        // });
+        // Schema::table('car_variants', function (Blueprint $table) {
+        //     $table->foreign('car_make_id')->references('id')->on('car_makes')->cascadeOnUpdate()->cascadeOnDelete();
+        // });
     }
 
     /**

@@ -25,4 +25,8 @@ class Review extends Model
     {
         return $this->belongsTo(Car::class);
     }
+    public function source()
+    {
+        return $this->morphTo();
+    }
 }
