@@ -28,12 +28,12 @@ return new class extends Migration {
             $table->string('location')->nullable();
             $table->longText('description')->nullable();
             $table->unsignedBigInteger('winner_id')->nullable();
-            $table->foreign('winner_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('winner_id')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
 
-            $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null');
-            $table->foreign('state_id')->references('id')->on('states')->onDelete('set null');
-            $table->foreign('city_id')->references('id')->on('cities')->onDelete('set null');
+            $table->foreign('country_id')->references('id')->on('countries')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('state_id')->references('id')->on('states')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('city_id')->references('id')->on('cities')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

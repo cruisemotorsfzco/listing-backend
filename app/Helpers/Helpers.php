@@ -15,6 +15,7 @@ use App\Models\Upload;
 use App\Models\RegionalSpec;
 use App\Models\Badge;
 use App\Models\Inquiry;
+use App\Models\PaymentMethod;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
@@ -33,20 +34,22 @@ if (!function_exists('generateCode')) {
             return generateCodePattern($type, 'CModel', CarModel::query(), 'code');
         } elseif ($type == 'car-variant') {
             return generateCodePattern($type, 'CVariant', CarVariant::query(), 'code');
-        }elseif ($type == 'company') {
+        } elseif ($type == 'company') {
             return generateCodePattern($type, 'COM', Company::query(), 'code');
-        }  elseif ($type == 'inquiry') {
+        } elseif ($type == 'inquiry') {
             return generateCodePattern($type, 'INQ', Inquiry::query(), 'code');
-        }  elseif ($type == 'car') {
+        } elseif ($type == 'car') {
             return generateCodePattern($type, 'CAR', Car::query(), 'code');
         } elseif ($type == 'car-category') {
             return generateCodePattern($type, 'CC', CarCategory::query(), 'code');
         } elseif ($type == 'car-body-type') {
             return generateCodePattern($type, 'CBT', CarBodyType::query(), 'code');
-        } elseif ($type == 'regional-specification'){
+        } elseif ($type == 'regional-specification') {
             return generateCodePattern($type, 'RSPEC', RegionalSpec::query(), 'code');
-        }elseif ($type == 'badge'){
+        } elseif ($type == 'badge') {
             return generateCodePattern($type, 'BDGE', Badge::query(), 'code');
+        } elseif ($type == 'payment-method') {
+            return generateCodePattern($type, 'PM', PaymentMethod::query(), 'code');
         }
         return '';
     }

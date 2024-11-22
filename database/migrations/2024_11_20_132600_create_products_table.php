@@ -40,7 +40,7 @@ return new class extends Migration
             $table->foreign('car_model_id')->references('id')->on('car_models')->cascadeOnUpdate()->cascadeOnDelete();
             // $table->foreign('product_category_id')->references('id')->on('product_categories')->onDelete('cascade');
             // $table->foreign('product_sub_category_id')->references('id')->on('product_sub_categories')->onDelete('cascade');
-//            $table->foreign('thumbnail')->references('id')->on('uploads')->onDelete('set null');
+//            $table->foreign('thumbnail')->references('id')->on('uploads')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

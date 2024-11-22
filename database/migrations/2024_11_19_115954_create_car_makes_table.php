@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('slug')->unique();
             $table->unsignedBigInteger('logo')->nullable();
             $table->string('official_website')->nullable();
+            $table->boolean('is_featured')->nullable(); 
             $table->timestamps();
             $table->softDeletes();
         });

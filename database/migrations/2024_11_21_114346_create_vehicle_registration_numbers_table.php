@@ -27,9 +27,9 @@ return new class extends Migration {
             $table->enum('status', ['on hold', 'active', 'sold']);
             $table->timestamps();
 
-            $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null');
-            $table->foreign('state_id')->references('id')->on('states')->onDelete('set null');
-            $table->foreign('city_id')->references('id')->on('cities')->onDelete('set null');
+            $table->foreign('country_id')->references('id')->on('countries')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('state_id')->references('id')->on('states')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('city_id')->references('id')->on('cities')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

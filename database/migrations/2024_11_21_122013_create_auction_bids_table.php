@@ -23,7 +23,7 @@ return new class extends Migration
             // Foreign key constraints
             $table->foreign('auction_id')->references('id')->on('auctions')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('auction_item_id')->references('id')->on('auction_items')->onDelete('set null');
+            $table->foreign('auction_item_id')->references('id')->on('auction_items')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

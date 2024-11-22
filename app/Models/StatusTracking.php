@@ -15,8 +15,8 @@ class StatusTracking extends Model
     {
         parent::boot();
 
-        static::addGlobalScope('order', function ($builder) {
-            $builder->orderBy('created_at', 'desc');
+        static::addGlobalScope('created_at', function ($builder) {
+            $builder->orderBy('created_at', 'asc');
         });
     }
 

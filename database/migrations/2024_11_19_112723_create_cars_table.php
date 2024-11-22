@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('code')->unique();
             $table->string('slug')->unique();
             $table->string('name');
@@ -47,7 +48,6 @@ return new class extends Migration {
             $table->double('average_on_road')->nullable();
             $table->boolean('is_premium')->default(0);
             $table->string('discount')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
